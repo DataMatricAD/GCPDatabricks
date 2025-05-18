@@ -1,0 +1,29 @@
+resources:
+  jobs:
+    ecommerce_order_details:
+      name: ecommerce_order_details
+      tasks:
+        - task_key: raw_data_load
+          notebook_task:
+            notebook_path: /Workspace/Users/xxxxxxxxxx@xxxx.com/ecommerce/1.
+              BronzeDataProcess
+            source: WORKSPACE
+          existing_cluster_id: 5512-080229-x3xxxgx
+        - task_key: processed_data_load
+          depends_on:
+            - task_key: raw_data_load
+          notebook_task:
+            notebook_path: /Workspace/Users/xxxxxxxxxx@xxxx.com/ecommerce/2.
+              SilverDataProcess
+            source: WORKSPACE
+          existing_cluster_id: 5512-080229-x3xxxgx
+        - task_key: gold_data_load
+          depends_on:
+            - task_key: processed_data_load
+          notebook_task:
+            notebook_path: /Workspace/Users/xxxxxxxxxx@xxxx.com/ecommerce/3.
+              GoldDataProcess
+            source: WORKSPACE
+          existing_cluster_id: 5512-080229-x3xxxgx
+      queue:
+        enabled: true

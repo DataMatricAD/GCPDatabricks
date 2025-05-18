@@ -1,0 +1,104 @@
+{
+    "cluster_id": "5512-080229-x3xxxxgx",
+    "creator_user_name": "xxxxxxxxxx@xxxx.com",
+    "driver": {
+        "private_ip": "10.0.0.38",
+        "node_id": "4e87435ec6d74a688b47712ababb0572",
+        "instance_id": "databricks-3690342327346396-1747546298-cj0j5ne0000",
+        "start_timestamp": 1747546390715,
+        "node_attributes": {
+            "is_spot": false
+        },
+        "host_private_ip": "10.0.0.39",
+        "ngrok_endpoint_base_domain": "green.mux.ngrok-dataplane.wildcard"
+    },
+    "spark_context_id": 7479355502560814000,
+    "driver_healthy": true,
+    "jdbc_port": 10000,
+    "cluster_name": "GCP Databricks Cluster",
+    "spark_version": "15.4.x-scala2.12",
+    "spark_conf": {
+        "spark.master": "local[*, 4]",
+        "spark.databricks.cluster.profile": "singleNode"
+    },
+    "gcp_attributes": {
+        "use_preemptible_executors": false,
+        "google_service_account": "databricks-bigquery-xxxxx@gcp-databricks-project-00000000.iam.gserviceaccount.com",
+        "availability": "ON_DEMAND_GCP",
+        "zone_id": "auto",
+        "local_ssd_count": 1
+    },
+    "node_type_id": "c2-standard-4",
+    "driver_node_type_id": "c2-standard-4",
+    "custom_tags": {
+        "ResourceClass": "SingleNode"
+    },
+    "spark_env_vars": {
+        "PYSPARK_PYTHON": "/databricks/python3/bin/python3"
+    },
+    "autotermination_minutes": 15,
+    "enable_elastic_disk": false,
+    "disk_spec": {},
+    "cluster_source": "UI",
+    "single_user_name": "xxxxxxxxxx@xxxx.com",
+    "enable_local_disk_encryption": false,
+    "instance_source": {
+        "node_type_id": "c2-standard-4"
+    },
+    "driver_instance_source": {
+        "node_type_id": "c2-standard-4"
+    },
+    "data_security_mode": "SINGLE_USER",
+    "runtime_engine": "STANDARD",
+    "effective_spark_version": "15.4.x-scala2.12",
+    "assigned_principal": "user:xxxxxxxxxx@xxxx.com",
+    "release_version": "15.4.15",
+    "state": "RUNNING",
+    "state_message": "",
+    "start_time": 1746864289318,
+    "last_state_loss_time": 1747546488892,
+    "last_activity_time": 1747546507260,
+    "last_restarted_time": 1747546488925,
+    "num_workers": 0,
+    "cluster_memory_mb": 16384,
+    "cluster_cores": 4,
+    "default_tags": {
+        "Vendor": "Databricks",
+        "Creator": "xxxxxxxxxx@xxxx.com",
+        "ClusterName": "GCP Databricks Cluster",
+        "ClusterId": "5512-080229-x3xxxxgx"
+    },
+    "init_scripts_safe_mode": false,
+    "spec": {
+        "cluster_name": "GCP Databricks Cluster",
+        "spark_version": "15.4.x-scala2.12",
+        "spark_conf": {
+            "spark.master": "local[*, 4]",
+            "spark.databricks.cluster.profile": "singleNode"
+        },
+        "gcp_attributes": {
+            "use_preemptible_executors": false,
+            "google_service_account": "databricks-bigquery-xxxxx@gcp-databricks-project-00000000.iam.gserviceaccount.com",
+            "availability": "ON_DEMAND_GCP",
+            "zone_id": "auto",
+            "local_ssd_count": 1
+        },
+        "node_type_id": "c2-standard-4",
+        "driver_node_type_id": "c2-standard-4",
+        "custom_tags": {
+            "ResourceClass": "SingleNode"
+        },
+        "spark_env_vars": {
+            "PYSPARK_PYTHON": "/databricks/python3/bin/python3"
+        },
+        "autotermination_minutes": 15,
+        "enable_elastic_disk": false,
+        "single_user_name": "xxxxxxxxxx@xxxx.com",
+        "enable_local_disk_encryption": false,
+        "data_security_mode": "SINGLE_USER",
+        "runtime_engine": "STANDARD",
+        "assigned_principal": "user:xxxxxxxxxx@xxxx.com",
+        "num_workers": 0,
+        "apply_policy_default_values": false
+    }
+}
