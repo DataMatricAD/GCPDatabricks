@@ -1,0 +1,29 @@
+--Create bronze tables with schema
+
+CREATE SCHEMA IF NOT EXISTS `gcp-dbsbq-migration.retail_bronze`;
+
+
+-- customers
+CREATE OR REPLACE TABLE `gcp-dbsbq-migration.retail_bronze.customers_tbl`
+AS SELECT * FROM `gcp-dbsbq-migration.retails_db.customer_tbl`;
+
+--inventory
+CREATE OR REPLACE TABLE `gcp-dbsbq-migration.retail_bronze.inventory_tbl`
+AS SELECT * FROM `gcp-dbsbq-migration.retails_db.inventory_tbl`;
+
+-- order_items
+CREATE OR REPLACE TABLE `gcp-dbsbq-migration.retail_bronze.order_items_tbl`
+AS SELECT * FROM `gcp-dbsbq-migration.retails_db.order_items_tbl`;
+
+--orders
+CREATE OR REPLACE TABLE `gcp-dbsbq-migration.retail_bronze.orders_tbl`
+AS SELECT * FROM `gcp-dbsbq-migration.retails_db.orders_tbl`;
+
+
+-- products
+CREATE OR REPLACE TABLE `gcp-dbsbq-migration.retail_bronze.products_tbl`
+AS SELECT * FROM `gcp-dbsbq-migration.retails_db.products_tbl`;
+
+--stores
+CREATE OR REPLACE TABLE `gcp-dbsbq-migration.retail_bronze.stores_tbl`
+AS SELECT * FROM `gcp-dbsbq-migration.retails_db.stores_tbl`;

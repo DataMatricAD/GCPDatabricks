@@ -1,0 +1,21 @@
+SELECT *
+FROM `region-us-west1`.INFORMATION_SCHEMA.JOBS_BY_PROJECT
+WHERE job_id = 'airflow_run_retails_data_sqls_process_bronze_2025_08_01T18_01_16_075751_00_00_304a757e5da8290304bd03f0c968e08c';
+
+SELECT
+  job_id,
+  user_email,
+  creation_time,
+  statement_type,
+  query,
+  total_bytes_processed,
+  total_bytes_processed / POWER(2, 30) AS gb_processed,
+  ROUND(total_bytes_processed / POWER(2, 40) * 5, 2) AS estimated_cost_usd
+FROM
+  `region-us-west1`.INFORMATION_SCHEMA.JOBS_BY_PROJECT
+WHERE
+  job_id = 'airflow_run_retails_data_sqls_process_bronze_2025_08_01T18_01_16_075751_00_00_304a757e5da8290304bd03f0c968e08c'
+  -- AND creation_time BETWEEN TIMESTAMP('2025-08-01 00:00:00') AND TIMESTAMP('2025-08-01 01:00:00')
+  AND user_email = '503751538789-compute@developer.gserviceaccount.com'
+ORDER BY creation_time DESC
+LIMIT 100;

@@ -1,0 +1,18 @@
+--Create ML Models
+--Label: Customer is considered "churned" if they haven’t ordered in the last 60 days.
+
+CREATE OR REPLACE MODEL `gcp-dbsbq-migration.retail_gold.ml_churn_model`
+OPTIONS(model_type='logistic_reg') AS
+SELECT
+  *,
+  CASE WHEN days_since_last_order > 60 THEN 1 ELSE 0 END AS label
+FROM `gcp-dbsbq-migration.retail_gold.gold_customer_features`;
+
+
+SELECT
+  customer_id,
+  predicted_label,
+  predicted_label_probs
+FROM
+  ML.PREDICT(MODEL `gcp-dbsbq-migration.retail_gold.ml_churn_model`,
+             (SELECT * FROM `gcp-dbsbq-migration.retail_gold.gold_customer_features`));
