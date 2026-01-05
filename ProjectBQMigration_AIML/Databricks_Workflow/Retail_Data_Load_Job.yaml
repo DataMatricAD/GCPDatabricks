@@ -1,0 +1,29 @@
+resources:
+  jobs:
+    Retail_Data_Load_Job:
+      name: Retail_Data_Load_Job
+      tasks:
+        - task_key: Bronze_Data_Load
+          notebook_task:
+            notebook_path: /Workspace/Users/xxxxxxx@gmail.com/retails_demo/1.
+              BronzeDataProcess
+            source: WORKSPACE
+          existing_cluster_id: 5802-xxxxxxx-s2jw5lqy
+        - task_key: Gold_Data_Load
+          depends_on:
+            - task_key: Silver_Data_Load
+          notebook_task:
+            notebook_path: /Workspace/Users/xxxxxxxx@gmail.com/retails_demo/3.
+              GoldDataProcess
+            source: WORKSPACE
+          existing_cluster_id: 5802-xxxxxxx-s2jw5lqy
+        - task_key: Silver_Data_Load
+          depends_on:
+            - task_key: Bronze_Data_Load
+          notebook_task:
+            notebook_path: /Workspace/Users/xxxxx@gmail.com/retails_demo/2.
+              SilverDataProcess
+            source: WORKSPACE
+          existing_cluster_id: 5802-xxxxxxx-s2jw5lqy
+      queue:
+        enabled: true

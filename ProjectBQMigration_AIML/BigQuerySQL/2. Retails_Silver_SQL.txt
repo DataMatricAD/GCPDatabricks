@@ -1,0 +1,46 @@
+--Create silver tables with schema
+
+CREATE SCHEMA IF NOT EXISTS `gcp-dbsbq-migration.retail_silver`;
+
+--orders with proper dates & joins
+
+CREATE OR REPLACE TABLE gcp-dbsbq-migration.retail_silver.orders AS
+SELECT 
+  o.order_id,
+  o.customer_id,
+  c.first_name,
+  c.last_name,
+  o.store_id,
+  s.store_name,
+  o.order_date,
+  o.status
+FROM gcp-dbsbq-migration.retail_bronze.orders_tbl o
+JOIN gcp-dbsbq-migration.retail_bronze.customers_tbl c USING (customer_id)
+JOIN gcp-dbsbq-migration.retail_bronze.stores_tbl s USING (store_id);
+
+--Join order items with products
+
+CREATE OR REPLACE TABLE gcp-dbsbq-migration.retail_silver.order_items AS
+SELECT 
+  oi.order_id,
+  oi.product_id,
+  p.name AS product_name,
+  p.category,
+  oi.quantity,
+  oi.unit_price,
+  oi.total_price
+FROM gcp-dbsbq-migration.retail_bronze.order_items_tbl oi
+JOIN gcp-dbsbq-migration.retail_bronze.products_tbl p USING (product_id);
+
+--Inventory cleaned
+
+CREATE OR REPLACE TABLE gcp-dbsbq-migration.retail_silver.inventory AS
+SELECT 
+  i.store_id,
+  s.store_name,
+  i.product_id,
+  p.name AS product_name,
+  i.stock
+FROM gcp-dbsbq-migration.retail_bronze.inventory_tbl i
+JOIN gcp-dbsbq-migration.retail_bronze.stores_tbl s USING (store_id)
+JOIN gcp-dbsbq-migration.retail_bronze.products_tbl p USING (product_id);
